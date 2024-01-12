@@ -1,0 +1,31 @@
+<%= turbo_stream_from @dossier %>
+
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <%= render @dossier %>
+
+    <div class="dropzone" 
+         data-controller="dropzone" 
+         data-dropzone-url-value="<%= dossier_contracts_path(@dossier) %>" 
+         data-turbo-permanent
+
+    >
+      <%= file_field_tag :images,
+            class: "col-span-6 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
+            multiple: true,
+            data: { dropzone_target: "input" } %>      
+    </div>
+
+    <%= render @dossier.contracts %>
+
+    <%= link_to "Edit this dossier", edit_dossier_path(@dossier), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= button_to "Destroy this dossier", dossier_path(@dossier), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+    <%= link_to "Back to dossiers", dossiers_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
+</div>
