@@ -20,7 +20,7 @@
             data: { dropzone_target: "input" } %>      
     </div>
 
-    <%= render @dossier.contracts %>
+    <ul class="flex flex-col divide-y my-10"><%= render @dossier.contracts %></ul>
 
     <%= link_to "Edit this dossier", edit_dossier_path(@dossier), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">

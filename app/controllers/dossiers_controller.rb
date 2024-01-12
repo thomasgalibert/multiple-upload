@@ -49,6 +49,12 @@ class DossiersController < ApplicationController
 
   # DELETE /dossiers/1 or /dossiers/1.json
   def destroy
+    # destroy all contracts before and purge their fichier attachment
+    @dossier.contracts.each do |contract|
+      contract.fichier.purge
+      contract.destroy!
+    end
+    
     @dossier.destroy!
 
     respond_to do |format|

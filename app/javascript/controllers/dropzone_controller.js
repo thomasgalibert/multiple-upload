@@ -19,6 +19,7 @@ export default class extends Controller {
       clickable: true,
       maxThumbnailFilesize: '20',
       addRemoveLinks: true,
+      dictDefaultMessage: 'Drop your files or click to select !!',
     })  
 
     dropzone.on("addedfile", file => {
